@@ -1,0 +1,17 @@
+/* Card
+.card {
+  width: 250px;
+}
+
+.card-img-top {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img-top img {
+  width: 200px;
+  height: 200px;
+}
+
+@media (max-width: 500px) {
+} */
