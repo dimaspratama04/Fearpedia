@@ -1,10 +1,10 @@
 <template>
   <div id="navbar" class="navbar navbar-expand-lg fixed-top bg-success w-100">
-    <div class="container">
-      <router-link to="/" class="navbar-brand fs-2 fw-bold text-white">Fearpedia</router-link>
-      <button class="navbar-toggler" type="button" @click="toggleNavbar">
+    <div class="container justify-content-start gap-2">
+      <button class="btn btn-outline-success d-lg-none" type="button" @click="toggleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <router-link to="/" class="navbar-brand fs-2 fw-bold text-white">Fearpedia</router-link>
 
       <div class="collapse navbar-collapse" :class="{ show: isNavbarOpen }" id="navbarNav">
         <ul class="navbar-nav ms-auto">
@@ -22,6 +22,7 @@
           </li>
         </ul>
       </div>
+    
     </div>
   </div>
 </template>

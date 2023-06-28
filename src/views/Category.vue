@@ -1,3 +1,112 @@
+<template>
+  <div class="category">
+    <div
+      class="category-button w-100 my-3 d-flex gap-2 flex-wrap justify-content-lg-end"
+    >
+      <b-button pill @click="scrollToAnchorPoint('electronics')"
+        >Electronics</b-button
+      >
+      <b-button pill @click="scrollToAnchorPoint('mensClothing')"
+        >Mens Clothing</b-button
+      >
+      <b-button pill @click="scrollToAnchorPoint('womensClothing')"
+        >Womens Clothing</b-button
+      >
+      <b-button pill @click="scrollToAnchorPoint('jewelery')"
+        >Jewelery</b-button
+      >
+    </div>
+
+    <!-- Electronics product -->
+    <div
+      ref="electronics"
+      class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2"
+    >
+      <div v-for="product in electronicsProduct" :key="product.id">
+        <div v-if="isLoading">
+          <CardProductSkeleton />
+        </div>
+        <div v-else>
+          <CardProduct
+            :productImg="product.image"
+            :productCategory="product.category"
+            :productTitle="product.title"
+            :productPrice="product.price"
+            :productRating="product.rating.rate"
+            :productRatingSale="product.rating.count"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mens Clothing Product -->
+    <div
+      ref="mensClothing"
+      class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2"
+    >
+      <div v-for="product in mensClothingProduct" :key="product.id">
+        <div v-if="isLoading">
+          <CardProductSkeleton />
+        </div>
+        <div v-else>
+          <CardProduct
+            :productImg="product.image"
+            :productCategory="product.category"
+            :productTitle="product.title"
+            :productPrice="product.price"
+            :productRating="product.rating.rate"
+            :productRatingSale="product.rating.count"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Womens Clothing Product -->
+    <div
+      ref="womensClothing"
+      class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2"
+    >
+      <div v-for="product in womensClothingProduct" :key="product.id">
+        <div v-if="isLoading">
+          <CardProductSkeleton />
+        </div>
+        <div v-else>
+          <CardProduct
+            :productImg="product.image"
+            :productCategory="product.category"
+            :productTitle="product.title"
+            :productPrice="product.price"
+            :productRating="product.rating.rate"
+            :productRatingSale="product.rating.count"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Jewelery Product -->
+    <div
+      ref="jewelery"
+      class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2"
+    >
+      <div v-for="product in jeweleryProduct" :key="product.id">
+        <div v-if="isLoading">
+          <CardProductSkeleton />
+        </div>
+        <div v-else>
+          <CardProduct
+            :productImg="product.image"
+            :productCategory="product.category"
+            :productTitle="product.title"
+            :productPrice="product.price"
+            :productRating="product.rating.rate"
+            :productRatingSale="product.rating.count"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 // Modules
 import axios from "axios";
@@ -11,6 +120,13 @@ export default {
   components: {
     CardProduct,
     CardProductSkeleton,
+  },
+
+  methods: {
+    scrollToAnchorPoint(refName) {
+      const el = this.$refs[refName];
+      el.scrollIntoView({ behavior: "smooth" });
+    },
   },
 
   data() {
@@ -63,62 +179,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="category">
-    <!-- Electronics product -->
-    <h1 class="text-black">ELECTRONICS</h1>
-    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-      <div v-for="product in electronicsProduct" :key="product.id">
-        <div v-if="isLoading">
-          <CardProductSkeleton />
-        </div>
-        <div v-else>
-          <CardProduct :productImg="product.image" :productCategory="product.category" :productTitle="product.title" :productPrice="product.price" :productRating="product.rating.rate" :productRatingSale="product.rating.count" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Mens Clothing Product -->
-    <h1 class="text-black">Mens Clothing</h1>
-    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-      <div v-for="product in mensClothingProduct" :key="product.id">
-        <div v-if="isLoading">
-          <CardProductSkeleton />
-        </div>
-        <div v-else>
-          <CardProduct :productImg="product.image" :productCategory="product.category" :productTitle="product.title" :productPrice="product.price" :productRating="product.rating.rate" :productRatingSale="product.rating.count" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Womens Clothing Product -->
-    <h1 class="text-black">Womens Clothing</h1>
-    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-      <div v-for="product in womensClothingProduct" :key="product.id">
-        <div v-if="isLoading">
-          <CardProductSkeleton />
-        </div>
-        <div v-else>
-          <CardProduct :productImg="product.image" :productCategory="product.category" :productTitle="product.title" :productPrice="product.price" :productRating="product.rating.rate" :productRatingSale="product.rating.count" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Jewelery Product -->
-    <h1 class="text-black">Jewelery</h1>
-    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-      <div v-for="product in jeweleryProduct" :key="product.id">
-        <div v-if="isLoading">
-          <CardProductSkeleton />
-        </div>
-        <div v-else>
-          <CardProduct :productImg="product.image" :productCategory="product.category" :productTitle="product.title" :productPrice="product.price" :productRating="product.rating.rate" :productRatingSale="product.rating.count" />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .category {
