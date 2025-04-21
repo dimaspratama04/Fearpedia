@@ -37,7 +37,6 @@ export default {
           switch (product.category) {
             case "electronics":
               this.electronicsProduct.push(product);
-              console.log(product);
               break;
             case "men's clothing":
               this.mensClothingProduct.push(product);

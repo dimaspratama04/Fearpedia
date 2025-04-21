@@ -5,9 +5,30 @@ export default {
     productImg: String,
     productTitle: String,
     productCategory: String,
-    productPrice: String,
-    productRating: String,
-    productRatingSale: String,
+    productPrice: [String, Number],
+    productRating: [String, Number],
+    productRatingSale: [String, Number],
+  },
+
+  methods: {
+    addToCheckout() {
+      const product = {
+        id: Date.now(),
+        name: this.productTitle,
+        price: this.productPrice,
+        image: this.productImg,
+        category: this.productCategory,
+        rating: {
+          rate: this.productRating,
+          count: this.productRatingSale,
+        },
+      };
+      let checkouted = JSON.parse(localStorage.getItem("checkoutedProducts")) || [];
+
+      checkouted.push(product);
+
+      localStorage.setItem("checkoutedProducts", JSON.stringify(checkouted));
+    },
   },
 };
 </script>
@@ -26,6 +47,7 @@ export default {
       <div class="card-product-cta mt-2">
         <b-icon-star-fill variant="warning"></b-icon-star-fill>
         <span class="ms-2">{{ productRating }} | Sold {{ productRatingSale }}pcs</span>
+        <b-icon-cart class="ms-5" @click="addToCheckout" />
       </div>
     </div>
   </div>

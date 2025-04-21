@@ -15,7 +15,7 @@
             <router-link to="/category" class="nav-link text-white">Category</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/cart" class="nav-link text-white">Cart</router-link>
+            <router-link to="/checkout" class="nav-link text-white">Checkout</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/login" class="nav-link text-white">Sign in</router-link>
